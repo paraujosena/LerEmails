@@ -1,0 +1,118 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:snm="clr-namespace:System.Net.Mail;assembly=System" xmlns:ss="clr-namespace:System.Security;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_emailStr" Type="InArgument(x:String)" />
+    <x:Property Name="in_passwordSecStr" Type="InArgument(ss:SecureString)" />
+    <x:Property Name="out_mailMessages" Type="InArgument(scg:List(snm:MailMessage))" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>575,1331</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="29">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>UiPath.Mail</x:String>
+      <x:String>UiPath.Mail.IMAP.Activities</x:String>
+      <x:String>UiPath.Mail.Activities</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="42">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap:VirtualizedContainerService.HintSize="473,1266" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="emailStr" />
+      <Variable x:TypeArguments="ss:SecureString" Name="passwordSecStr" />
+      <Variable x:TypeArguments="scg:List(snm:MailMessage)" Name="messagesMail" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:Comment sap:VirtualizedContainerService.HintSize="431,151" sap2010:WorkflowViewState.IdRef="Comment_2" Text="Vamos iniciar passando os valores a serem usados para acessar os emails.&#xD;&#xA;&#xD;&#xA;Esses valores são argumentos de entrada, ou seja, os valores são definidos por quem invoca esta atividade.&#xA;" />
+    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="431,131" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+      <ui:MultipleAssign.AssignOperations>
+        <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[emailStr]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[in_emailStr]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="ss:SecureString">[passwordSecStr]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="ss:SecureString">[in_passwordSecStr]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+        </scg:List>
+      </ui:MultipleAssign.AssignOperations>
+    </ui:MultipleAssign>
+    <ui:Comment DisplayName="Comment" sap:VirtualizedContainerService.HintSize="431,536" sap2010:WorkflowViewState.IdRef="Comment_3" Text="https://docs.uipath.com/activities/docs/get-imap-mail-messages&#xA;&#xA;Configurar atividade:&quot;GetIMAPMailMessages&quot; para ler mensagens do email.&#xA;&#xA;Configurar filtros de busca dentro da pasta indicada no email.&#xA;&#xA;MailFolder:&quot;Inbox&quot;&#xA;Porta:993&#xA;Server:&quot;imap.gmail.com&quot;&#xA;FilterExpressionCharacterSet:&quot;UTF-8&quot;&#xA;MarkAsRead:1(marca)&#xA;OnlyUnreadMessages: 0(desmarca) &#xA;Top:30&#xA;&#xA;//para ler as 30 primeiras messagens, estando lidas ou não, e marcar como lida caso seja possível.&#xA;&#xA;Query &#xA;Traduzido&#xA;Filter Expression&#xA;&#xA;All mail messages that contain &quot;Welcome&quot; in the subject &#xA;Todas as mensagens de e-mail que contenham &quot;Bem-vindo&quot; no assunto&#xA;&quot;SUBJECT &quot;&quot;Bem-vindo&quot;&quot;&quot;&#xA;&#xA;All mail messages that contain &quot;Welcome&quot; in the subject and are from &quot;john.smith@example.com&quot; &#xA;Todas as mensagens de e-mail que contêm &quot;Bem-vindo&quot; no assunto e são de &quot;john.smith@example.com&quot;&#xA;&quot;SUBJECT &quot;&quot;Bem-vindo&quot;&quot; FROM john.smith@example.com&quot;&#xA;&#xA;All mail messages that contain &quot;Welcome&quot; in the subject and are not from &quot;john.smith@example.com&quot; &#xA;Todas as mensagens de e-mail que contêm &quot;Bem-vindo&quot; no assunto e não são de &quot;john.smith@example.com&quot;&#xA;&quot;SUBJECT &quot;&quot;Bem-vindo&quot;&quot; NOT FROM john.smith@example.com&quot;&#xA;&#xA;All mail messages that contain &quot;Please review&quot; in the body &#xA;Todas as mensagens de e-mail que contenham &quot;Por favor, revise&quot;&#xA;&quot;BODY &quot;&quot;Por favor, revise&quot;&quot;&quot;&#xA;&#xA;All flagged mail messages (i.e. \Flagged flag set) &#xA;Todas as mensagens de e-mail sinalizadas&#xA;&quot;FLAGGED&quot;&#xA;&#xA;All mail messages since 02/23/2021 &#xA;Todas as mensagens de correio desde 23/02/2021&#xA;&quot;SINCE 23-Feb-2021&quot;&#xA;&#xA;All non-delivery report mail messages received on 02/23/2021 or 01/23/2021&#xA;Todas as mensagens de e-mail de relatório de não entrega recebidas em 23/02/2021 ou 23/01/2021&#xA;&quot;OR (ON 23-Feb-2021 FROM postmaster@outlook.com) (ON 23-Jan-2021 FROM postmaster@outlook.com)&quot;&#xA;&#xA;All mail messages unanswered today and from an email address that contains &quot;examples.com&quot; &#xA;Todas as mensagens de e-mail não respondidas hoje e de um endereço de e-mail que contém &quot;examples.com&quot; &#xA;&quot;UNANSWERED ON &quot; + DateTime.Today.ToString(&quot;dd-MMM-yyyy&quot;) + &quot; FROM examples.com&quot;&#xA;" />
+    <ui:GetIMAPMailMessages ClientName="{x:Null}" ClientVersion="{x:Null}" FilterExpression="{x:Null}" Password="{x:Null}" TimeoutMS="{x:Null}" DeleteMessages="False" DisplayName="Get IMAP Mail Messages" Email="[in_emailStr]" EnableSSL="True" FilterExpressionCharacterSet="UTF-8" sap:VirtualizedContainerService.HintSize="431,22" sap2010:WorkflowViewState.IdRef="GetIMAPMailMessages_1" MailFolder="Inbox" MarkAsRead="True" Messages="[messagesMail]" OnlyUnreadMessages="True" OrderByDate="NewestFirst" Port="993" SecureConnection="Auto" SecurePassword="[in_passwordSecStr]" Server="imap.gmail.com" Top="30" />
+    <ui:Comment DisplayName="Comment" sap:VirtualizedContainerService.HintSize="431,74" sap2010:WorkflowViewState.IdRef="Comment_4" Text="Caso exista mensagens, ler valores da variável: &quot;messagesMail&quot;" />
+    <Assign sap:VirtualizedContainerService.HintSize="431,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+      <Assign.To>
+        <OutArgument x:TypeArguments="scg:List(snm:MailMessage)">[out_mailMessages]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="scg:List(snm:MailMessage)">[messagesMail]</InArgument>
+      </Assign.Value>
+    </Assign>
+  </Sequence>
+</Activity>
